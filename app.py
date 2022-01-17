@@ -30,12 +30,16 @@ app.layout = html.Div(
 
     [
         html.H1('Hallo!!!',
-                style={'color': colors['text']}),
+                style={'color': colors['text'],
+                'textAlign': 'center'
+                       }),
         html.Div('Moj pierwszy dashb',
-             style={'color': colors['text']}),
+             style={'color': colors['text']
+                    }),
         dcc.Graph(id='example-graph',
               figure= fig,
-                  style={'color': colors['background']})
+                  style={'color': colors['background']
+                         })
     ],
     style={
         'backgroundColor': colors['background']
