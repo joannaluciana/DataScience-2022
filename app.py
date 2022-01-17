@@ -7,7 +7,7 @@ import pandas as pd
 import plotly.express as px
 
 
-app.layout
+app.layout ()
 
 app = dash.Dash(__name__)
 if __name__ == '__main__':
