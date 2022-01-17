@@ -1,0 +1,15 @@
+jupyter
+numpy
+pandas
+
+matplotlib
+seaborn
+sklearn
+
+requests
+beautifulsoup4
+
+plotly
+statsmodels
+
+dash
