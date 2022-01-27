@@ -18,32 +18,56 @@ df = pd.DataFrame( {"Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges
 fig = px.bar( df, x = "Fruit",
               y="Amount", color="City",
               barmode="group")
-fig.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text']
-)
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div(
 
+markdown_text = '''
+### Markdown w Dashu
+To jest prosty Markdown napisany w Markdown
+
+- lista
+- elemntow
+- z Markdown
+
+## Markdown!!! 
+'''
+app.layout = html.Div(
     [
-        html.H1('Hallo!!!',
-                style={'color': colors['text'],
-                'textAlign': 'center'
-                       }),
-        html.Div('Moj pierwszy dashb',
-             style={'color': colors['text']
-                    }),
+        dcc.Markdown(markdown_text),
+        html.Label('Dropdowny'),
         dcc.Graph(id='example-graph',
-              figure= fig,
-                  style={'color': colors['background']
-                         })
-    ],
-    style={
-        'backgroundColor': colors['background']
-    }
+              figure=fig),
+        dcc.Dropdown(
+                options=[
+                        {'label':'New York City', 'value': 'NYC'},
+                        {'label':'Warszawa', 'value':'Waw'},
+                        {'label':'Krakow', 'value':'Krk'}
+                        ],
+                value= 'NYC',
+
+        ),
+        html.Label('Dropdowny'),
+        dcc.Dropdown(
+                options=[
+                        {'label':'New York City', 'value': 'NYC'},
+                        {'label':'Warszawa', 'value':'Waw'},
+                        {'label':'Krakow', 'value':'Krk'}
+                        ],
+                value= ['Waw','NYC'],
+                multi=True
+        ),
+        html.Label('Radiobutton'),
+        dcc.RadioItems(
+                options=[
+                        {'label':'New York City', 'value': 'NYC'},
+                        {'label':'Warszawa', 'value':'Waw'},
+                        {'label':'Krakow', 'value':'Krk'}
+                        ],
+                value= 'NYC',
+
+        )
+]
 )
 if __name__ == '__main__':
     app.run_server(debug=True)
