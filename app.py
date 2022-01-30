@@ -66,7 +66,23 @@ app.layout = html.Div(
                         ],
                 value= 'NYC',
 
-        )
+        ),
+        html.Label('Checklist'),
+        dcc.Checklist(
+                options=[
+                        {'label':'New York City', 'value': 'NYC'},
+                        {'label':'Warszawa', 'value':'Waw'},
+                        {'label':'Krakow', 'value':'Krk'}
+                        ],
+                value= 'NYC',
+        ),
+        html.Label('Input'),
+        dcc.Input(value='Dummy', type= 'text'),
+        html.Label('Slider'),
+        dcc.Slider(min=0,
+                   max=9,
+                   marks={i: f'Label{i}' for i in range(10)})
+
 ]
 )
 if __name__ == '__main__':
