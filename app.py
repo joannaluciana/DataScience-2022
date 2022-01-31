@@ -15,6 +15,7 @@ df = pd.DataFrame( {"Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges
                     "Amount": [4, 1, 2, 2, 4, 5],
                     "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
                     })
+gdp_df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv')
 fig = px.bar( df, x = "Fruit",
               y="Amount", color="City",
               barmode="group")
