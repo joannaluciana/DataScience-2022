@@ -34,56 +34,24 @@ To jest prosty Markdown napisany w Markdown
 '''
 app.layout = html.Div(
     [
-        dcc.Markdown(markdown_text),
-        html.Label('Dropdowny'),
-        dcc.Graph(id='example-graph',
-              figure=fig),
-        dcc.Dropdown(
-                options=[
-                        {'label':'New York City', 'value': 'NYC'},
-                        {'label':'Warszawa', 'value':'Waw'},
-                        {'label':'Krakow', 'value':'Krk'}
-                        ],
-                value= 'NYC',
-
-        ),
-        html.Label('Dropdowny'),
-        dcc.Dropdown(
-                options=[
-                        {'label':'New York City', 'value': 'NYC'},
-                        {'label':'Warszawa', 'value':'Waw'},
-                        {'label':'Krakow', 'value':'Krk'}
-                        ],
-                value= ['Waw','NYC'],
-                multi=True
-        ),
-        html.Label('Radiobutton'),
-        dcc.RadioItems(
-                options=[
-                        {'label':'New York City', 'value': 'NYC'},
-                        {'label':'Warszawa', 'value':'Waw'},
-                        {'label':'Krakow', 'value':'Krk'}
-                        ],
-                value= 'NYC',
-
-        ),
-        html.Label('Checklist'),
-        dcc.Checklist(
-                options=[
-                        {'label':'New York City', 'value': 'NYC'},
-                        {'label':'Warszawa', 'value':'Waw'},
-                        {'label':'Krakow', 'value':'Krk'}
-                        ],
-                value= 'NYC',
-        ),
-        html.Label('Input'),
-        dcc.Input(value='Dummy', type= 'text'),
-        html.Label('Slider'),
-        dcc.Slider(min=0,
-                   max=9,
-                   marks={i: f'Label{i}' for i in range(10)})
+        html.H6('Wpisz cos w polu zeby zobaczyc jak dziala callback'),
+        html.Div([
+            "Input: ",
+            dcc.Input(id='my-input', value='dummy', type='text')
+        ]),
+        html.Br(),
+        html.Div(id='my-output'),
 
 ]
 )
+@app.callback(
+    Output('my-output', 'children'),
+    Input('my-input', 'value')
+
+)
+
+def update_output_div (input_value):
+    return f'Jak dziala callback? wpisales: {input_value}'
+
 if __name__ == '__main__':
     app.run_server(debug=True)
